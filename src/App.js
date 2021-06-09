@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { CustomFetchFn } from './components/CustomFetch';
+import Title from './components/Title';
+import Jobs from './components/Jobs';
+
+//API
+const payLoadUrl = "https://course-api.com/react-tabs-project";
 
 function App() {
+  //Using custom fetch hook to get the two parameters data and current state of application.
+  const {appState, data} = CustomFetchFn(payLoadUrl);
+
+  //If the data has not loaded yet from the api, display the loading screen.
+  if (data.length === 0) {
+   return <h3 className='section Loading'>We are {appState}</h3>
+  }
+  
+//else we are returning our application
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="section">
+      <Title />
+      <Jobs data={data}/>
+    </section>
   );
-}
+  }
 
 export default App;
