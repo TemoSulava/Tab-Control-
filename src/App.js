@@ -20,6 +20,7 @@ function App() {
     <section className="section">
       <Title />
       <Jobs data={data}/>
+      <button className='btn'>more info</button>
     </section>
   );
   }

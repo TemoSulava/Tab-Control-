@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Buttons from './Buttons';
+import JobInfo from './JobInfo';
 
 const Jobs = ({ data }) => {
   const [value, setValue] = useState(1);
@@ -17,6 +18,7 @@ const Jobs = ({ data }) => {
           );
         })}
       </div>
+      <JobInfo company={company} duties={duties} dates={dates} title={title}/>
     </div>
   );
 };
